@@ -1,0 +1,12 @@
+<!-- Projects/templates/projects/groupeprojet_confirm_delete.html -->
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+  <h2>Supprimer le groupe "{{ groupe.nom }}" ?</h2>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmer la suppression</button>
+  </form>
+  <a href="{% url 'groupeprojet_list' %}">Annuler</a>
+{% endblock %}

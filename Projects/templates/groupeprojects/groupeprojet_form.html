@@ -1,0 +1,13 @@
+<!-- Projects/templates/projects/groupeprojet_form.html -->
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+  <h2>{% if form.instance.pk %}Modifier{% else %}Créer{% endif %} GroupeProjet</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer</button>
+  </form>
+  <a href="{% url 'groupeprojet_list' %}">Retour à la liste</a>
+{% endblock %}

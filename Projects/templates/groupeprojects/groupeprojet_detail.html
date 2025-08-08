@@ -1,0 +1,13 @@
+<!-- Projects/templates/projects/groupeprojet_detail.html -->
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+  <h2>{{ groupe.nom }}</h2>
+  <p>Description : {{ groupe.description }}</p>
+  <p>Date de création : {{ groupe.date_creation }}</p>
+  <p>Date de modification : {{ groupe.date_modification }}</p>
+  <a href="{% url 'groupeprojet_update' groupe.pk %}">Modifier</a>
+  <a href="{% url 'groupeprojet_delete' groupe.pk %}">Supprimer</a>
+  <a href="{% url 'groupeprojet_list' %}">Retour à la liste</a>
+{% endblock %}

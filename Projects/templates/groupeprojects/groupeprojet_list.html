@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Page Title and Create Button -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2 class="mb-0">Liste des Groupes de Projets</h2>
+  <a href="{% url 'groupeprojet_create' %}" class="btn btn-primary">
+    <i class="fas fa-plus"></i> Nouveau Groupe
+  </a>
+</div>
+
+<!-- Table of Groups -->
+<div class="table-responsive">
+  <table class="table table-sm table-hover align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Nom du Groupe</th>
+        <th scope="col" class="text-end">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for groupe in groupes %}
+        <tr>
+          <td>
+            <a href="{% url 'groupeprojet_detail' groupe.pk %}" class="text-decoration-none">
+              {{ groupe.nom }}
+            </a>
+          </td>
+          <td class="text-end">
+            <a href="{% url 'groupeprojet_update' groupe.pk %}" class="btn btn-sm btn-outline-secondary me-1" title="Modifier">
+              <i class="fas fa-edit"></i>
+            </a>
+            <a href="{% url 'groupeprojet_delete' groupe.pk %}" class="btn btn-sm btn-outline-danger" title="Supprimer">
+              <i class="fas fa-trash-alt"></i>
+            </a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="2" class="text-center text-muted">Aucun groupe trouvé.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" id="deleteModalContent">
+      <!-- Le contenu de groupeprojet_confirm_delete.html viendra ici -->
+    </div>
+  </div>
+</div>
+
+{% endblock %}
